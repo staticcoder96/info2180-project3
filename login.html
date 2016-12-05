@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Cheapo Mail</title>
+			<link href="css/bootstrap.min.css" rel="stylesheet">
+			<link href="css/main.css" rel="stylesheet">
+	</head>
+	<body>
+		<header class="navbar navbar-inverse navbar-fixed-top image" role="banner">
+			<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+					<a class="navbar-brand" href="#"><h1>CheapoMail</h1></a> 
+					<div class="container wet-asphalt">
+					<a class="navbar-brand" href="#"><h1>login   </h1></a>
+					</div>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+				<li><a href="Home.html">Home</a></li>
+				<li><a href="mail.html">Mail</a></li>
+			</div>
+			</div>
+		</header>
+		
+			</section>
+			<section></section>
+			<div class="container">
+			<div class="row">
+			<div class="col-sm-6">
+			<h1>Loging In</h1>
+				<p>If have been registered by an administrator enter your username and password.</p>
+				<p>Once you are done click login.</p>
+			</div>
+			</div>
+			</div>
+		</section>
+		<section id="registration" class="container">
+			<form action="authentication.php" class="center" role="form" method="POST">
+				<fieldset class="registration-form">
+					<div class="form-group">
+					<input type="text" id="username" name="username" placeholder="Username" class="form-control">
+					</div>
+					<div class="form-group">
+					<input type="password" id="password" name="password" placeholder="Password" class="form-control">
+					</div>
+					<div class="form-group">
+					<input type="checkbox" id="check" name="check">Remember username
+					</div>
+					<div class="form-group">
+					<button type="submit" class="btn btn-success btn-md btn-block">Login</button>
+					</div>
+				</fieldset>
+			</form>
+		</section>
+		<section id="bottom" class="wet-asphalt">
+		</section>
+	</body>
+</html>
+
+
+<script>
+//Ajax request for Login
+document.getElementsByClassName('btn btn-success btn-md btn-block').onclick = function(){log();};
+var user = document.getElementById('username').value;
+var pass = document.getElementById('password').value;
+var home;
+
+function log(){
+	var request = XMLHttpRequest;
+	
+	if(!request){
+		alert("Bad Request");
+		return false;
+	} else if (user == "" || pass == ""){
+		alert("Please Enter The Information Required");
+	}
+	
+	request.onreadystatechange = function(){
+		if (request.readyState === 4 && request.status === 200){
+			home = document.getElementsByName("Home");
+			home = request.responseText;
+		} else{
+			console.log("Error");
+		}
+	};
+	request.open("POST", "authentication.php?"+home, true);
+	request.send;
+	
+}
+</script>
