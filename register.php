@@ -47,8 +47,8 @@ function request(){
 	else{
 		request.onreadystatechange = function(){
 			if(request.readyState === 4 && request.status === 200){
-				//feedback.innerHTML = request.responseText;
-				document.getElementsByClassName("registration-form").innerHTML = request.responseText;
+				feedback.innerHTML = request.responseText;
+				//document.getElementsByClassName("registration-form").innerHTML = request.responseText;
 			}
 			else{
 				console.log("Error");
